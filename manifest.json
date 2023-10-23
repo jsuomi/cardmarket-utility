@@ -1,0 +1,13 @@
+{
+    "manifest_version": 3,
+    "name": "Cardmarket Utility",
+    "version": "1.0",
+    "host_permissions": ["https://www.cardmarket.com/*"],
+    "content_scripts": [
+      {
+        "matches": ["https://www.cardmarket.com/*/Magic/Wants/*"],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
