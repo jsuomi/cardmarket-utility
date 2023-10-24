@@ -8,7 +8,7 @@ Chrome extension (manifest v3) for adding a "Copy Deck List" button to your Want
 - Clone the repo
     - or download as zip, if that's your thing
 - Load unpacked extension ([see Chrome docs](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked))
-- Go to your Wants list on Cardmarket
+- Go to your Wants list on [Cardmarket.com](https://www.cardmarket.com/en/Magic/Wants)
 - Click the button to copy your deck list
 ![Copy Deck List button](docs/copy-deck-list-button.png)
 
