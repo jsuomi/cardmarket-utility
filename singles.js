@@ -31,7 +31,8 @@ function appendLanguageToUrl() {
     let languageParam = params.get("language");
     if(!languageParam) {
         newUrl = url + "?language=" + language;
-        window.location.href = newUrl;
+        window.history.replaceState({}, document.title, newUrl); // replace url in history without reloading page
+        window.location.href = newUrl; // reload page
     }
 }
 
