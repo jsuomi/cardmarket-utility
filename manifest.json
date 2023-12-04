@@ -3,10 +3,25 @@
     "name": "Cardmarket Utility",
     "version": "1.0",
     "host_permissions": ["https://www.cardmarket.com/*"],
+    "permissions": ["activeTab"],
+    "icons": {
+      "96": "img/favicon-96x96.png"
+    },
     "content_scripts": [
       {
         "matches": ["https://www.cardmarket.com/*/Magic/Wants/*"],
-        "js": ["content.js"]
+        "js": ["wants.js"]
+      },
+      {
+        "matches": ["https://www.cardmarket.com/*/Magic/Orders/*"],
+        "js": ["orders.js"]
+      },
+      {
+        "matches": [
+          "https://www.cardmarket.com/*/Magic/Cards/*",
+          "https://www.cardmarket.com/*/Magic/Products/Singles/*"
+        ],
+        "js": ["singles.js"]
       }
     ]
   }

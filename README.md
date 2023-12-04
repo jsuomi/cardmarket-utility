@@ -1,6 +1,11 @@
 # Cardmarket Utility
 
+**Important! This extension is in no way, shape or form affiliated with Sammelkartenmarkt GmbH & Co (a.k.a. Cardmarket).**
+
 Chrome extension (manifest v3) for adding a "Copy Deck List" button to your Wants page.
+Tested in Chrome Version 119.0.6045.199 (Official Build) (x86_64).
+
+
 
 ## How to use
 
