@@ -14,27 +14,47 @@ function getLanguage() {
     let params = new URLSearchParams(window.location.search);
     let language = params.get("language");
     // default to english
-    if(!language || parseInt(language) < 1 || parseInt(language) > 10) {
+    if (!language || parseInt(language) < 1 || parseInt(language) > 10) {
         language = 1;
     }
     return language;
 }
 
+function getSellerCountry() {
+    let params = new URLSearchParams(window.location.search);
+    let sellerCountry = params.get("sellerCountry");
+    // default to EU, exclude UK & Japan
+    if (!sellerCountry) {
+        sellerCountry = "1,2,3,33,35,5,6,8,9,11,12,7,14,15,37,16,17,21,18,19,20,22,23,24,25,26,27,29,31,30,10,28,4";
+    }
+    return sellerCountry;
+}
+
 /**
  * Always add language filter to the end of the url
  */
-function appendLanguageToUrl() {
-    let language = getLanguage();
-    let url = window.location.href;
-    let newUrl = url;
+function appendQueryParamsToUrl() {
+    // require reload?
     let params = new URLSearchParams(window.location.search);
-    let languageParam = params.get("language");
-    if(!languageParam) {
-        newUrl = url + "?language=" + language;
-        window.history.replaceState({}, document.title, newUrl); // replace url in history without reloading page
-        window.location.href = newUrl; // reload page
+
+    let language = params.get("language");
+    let sellerCountry = params.get("sellerCountry");
+
+    if (!language || !sellerCountry) {
+        params.set("language", getLanguage());
+        params.set("sellerCountry", getSellerCountry());
+        // append query params to url
+        let newUrl = window.location.href + "?" + params.toString();
+        // replace url in history without reloading page
+        window.history.replaceState({}, document.title, newUrl);
     }
 }
 
+function reloadPage() {
+    let newUrl = window.location.href;
+    // window.location.href = newUrl; // reload page
+}
+
 // run once on page load
-appendLanguageToUrl();
+appendQueryParamsToUrl();
+reloadPage();
