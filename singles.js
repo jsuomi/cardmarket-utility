@@ -23,9 +23,9 @@ function getLanguage() {
 function getSellerCountry() {
     let params = new URLSearchParams(window.location.search);
     let sellerCountry = params.get("sellerCountry");
-    // default to EU, exclude UK & Japan
+    // default to EU only, exclude Japan, Norway, UK and Switzerland
     if (!sellerCountry) {
-        sellerCountry = "1,2,3,33,35,5,6,8,9,11,12,7,14,15,37,16,17,21,18,19,20,22,23,24,25,26,27,29,31,30,10,28,4";
+        sellerCountry = "1,2,3,33,35,5,6,8,9,11,12,7,14,15,37,16,17,21,18,19,20,22,23,25,26,27,29,31,30,10,28";
     }
     return sellerCountry;
 }
@@ -43,18 +43,16 @@ function appendQueryParamsToUrl() {
     if (!language || !sellerCountry) {
         params.set("language", getLanguage());
         params.set("sellerCountry", getSellerCountry());
+        params.set("sellerReputation", 3); // min seller reputation 3 = Good
+
         // append query params to url
         let newUrl = window.location.href + "?" + params.toString();
         // replace url in history without reloading page
         window.history.replaceState({}, document.title, newUrl);
+        // reload page
+        window.location.reload();
     }
-}
-
-function reloadPage() {
-    let newUrl = window.location.href;
-    // window.location.href = newUrl; // reload page
 }
 
 // run once on page load
 appendQueryParamsToUrl();
-reloadPage();
